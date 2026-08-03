@@ -17,3 +17,6 @@ bucket_name = "test"
 [vars]
 # Place your admin token in the dashboard or set as a secret; example shows using env secret ADMIN_TOKEN
 
+[observability.logs]
+enabled = false
+invocation_logs = true
