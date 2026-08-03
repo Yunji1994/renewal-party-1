@@ -13,16 +13,15 @@
     <header class="hero-header">
       <p class="eyebrow">Five years in • One mortgage renewal • Zero plans to move</p>
       <h1>Jade &amp; Jimmy’s Mortgage Renewal Party</h1>
-      <p class="lead">We’ve officially reached the point where a mortgage renewal feels like a reason to throw a party. So we’re celebrating the only thing we’ve truly mastered: keeping this house, this budget, and our sense of humor intact.</p>
+      <p class="lead">We’ve officially reached the point where a mortgage renewal feels like a reason to throw a party. So join us for some food, bingsu, s'mores (if the fire ban doesn't hit us), and good vibes!</p>
     </header>
 
     <section class="hero">
       <div class="hero-card">
         <div class="hero-copy">
-          <p class="hero-kicker">Housewarming, but make it five years later</p>
-          <h2>Come raise a glass to the roof over our heads, the paint jobs we swear we’ll finish, and the thrilling romance of a renewed mortgage.</h2>
+          <p class="hero-kicker">Housewarming, but five years later</p>
+          <img src="https://pub-26061392f7c849e998ee91ac41d9f5ed.r2.dev/test/watermarked_img_4521138009209552668.jpg" />
         </div>
-        <!-- Replace this with your R2-hosted image URL -->
         <img src="https://pub-26061392f7c849e998ee91ac41d9f5ed.r2.dev/test/20211105123651_IMG_7094.JPG" alt="Cozy home celebration" />
       </div>
     </section>
@@ -31,28 +30,36 @@
       <article class="info-card">
         <h2>Event Details</h2>
         <ul>
-          <li><strong>When:</strong> Saturday, [date] at [time]</li>
-          <li><strong>Where:</strong> [address] • come hungry, come curious</li>
-          <li><strong>Dress:</strong> Cozy, cheerful, and vaguely prepared for a home project</li>
+          <li><strong>When:</strong> Sunday, August 9 at 2:00 PM</li>
+          <li><strong>Where:</strong> 2314 5 Street NE</li>
+          <li><strong>What to expect:</strong> Just a casual get-together; we'll prepare some food and will have a bingsu machine going, and might have a fire if weather permits. Bring your own lawn chairs and drink mix!</li>
         </ul>
       </article>
       <article class="info-card">
         <h2>Updates &amp; Announcements</h2>
-        <p>We’ll post any last-minute plans here, from snack requests to parking notes to whether the “mortgage-free” champagne is still a joke.</p>
+        <p>We’ll post any last-minute plans (snack requests, activities) here.</p>
       </article>
     </section>
 
     <section class="rsvp">
+      <h2>Please RSVP Here</h2>
       <form id="rsvp-form">
         <label>Name<input name="name" required /></label>
         <label>Email<input name="email" type="email" required /></label>
         <label>Attending
           <select name="attending">
             <option value="yes">Yes</option>
+            <option value="maybe">Maybe</option>
             <option value="no">No</option>
           </select>
         </label>
-        <label>Guests<input name="guests" type="number" min="0" value="0" /></label>
+        <label>Are you bringing a +1?
+          <select name="plus_one">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </label>
+        <label>Dietary restrictions<textarea name="dietary_restrictions"></textarea></label>
         <label>Message<textarea name="message"></textarea></label>
         <button type="submit">Send RSVP</button>
       </form>

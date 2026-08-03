@@ -7,7 +7,8 @@ form.addEventListener('submit', async (e) => {
   statusEl.textContent = 'Sending...';
   const fd = new FormData(form);
   const payload = Object.fromEntries(fd.entries());
-  payload.guests = Number(payload.guests || 0);
+  payload.plus_one = payload.plus_one || 'no';
+  payload.dietary_restrictions = payload.dietary_restrictions || '';
 
   try {
     const res = await fetch(new URL('/rsvp', API).toString(), {
