@@ -24,5 +24,12 @@ input,textarea,select{width:100%;padding:10px 12px;border:1px solid #d7c1aa;bord
 button{background:linear-gradient(135deg,var(--accent),#b84f4f);color:#fff;border:none;padding:12px 16px;border-radius:999px;cursor:pointer;font-weight:700;box-shadow:0 8px 18px rgba(192,72,72,.2);transition:transform .15s ease,box-shadow .15s ease}
 button:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(192,72,72,.24)}
 #status{margin-top:10px;color:var(--accent-2)}
+.status-section{margin-top:16px;background:rgba(255,250,245,.95);padding:18px;border-radius:18px;box-shadow:0 10px 24px rgba(44,31,27,.06);border:1px solid rgba(47,111,106,.12)}
+.status-heading-row h2{margin:0 0 6px;color:var(--accent-2)}
+.status-heading-row p{margin:0;color:#5d4740}
+.status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.status-card{background:var(--paper);border:1px solid rgba(47,111,106,.12);border-radius:14px;padding:12px;text-align:center}
+.status-label{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.status-card strong{font-size:1.5rem;color:var(--ink)}
 footer{margin-top:16px;text-align:center;color:#7b655c}
-@media (max-width:700px){body{padding:16px}.hero-card{grid-template-columns:1fr}.hero img{min-height:200px}.hero-image-right{align-items:flex-start}}
+@media (max-width:700px){body{padding:16px}.hero-card{grid-template-columns:1fr}.hero img{min-height:200px}.hero-image-right{align-items:flex-start}.status-grid{grid-template-columns:1fr}}

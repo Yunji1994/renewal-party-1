@@ -50,7 +50,6 @@
       <h2>Please RSVP Here</h2>
       <form id="rsvp-form">
         <label>Name<input name="name" required /></label>
-        <label>Email<input name="email" type="email" required /></label>
         <label>Attending
           <select name="attending">
             <option value="yes">Yes</option>
@@ -69,6 +68,27 @@
         <button type="submit">Send RSVP</button>
       </form>
       <div id="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="status-section" aria-labelledby="status-heading">
+      <div class="status-heading-row">
+        <h2 id="status-heading">RSVP Status</h2>
+        <p>Here’s a simple live snapshot of the responses gathered on this page.</p>
+      </div>
+      <div class="status-grid">
+        <article class="status-card">
+          <span class="status-label">Yes</span>
+          <strong id="count-yes">0</strong>
+        </article>
+        <article class="status-card">
+          <span class="status-label">Maybe</span>
+          <strong id="count-maybe">0</strong>
+        </article>
+        <article class="status-card">
+          <span class="status-label">No</span>
+          <strong id="count-no">0</strong>
+        </article>
+      </div>
     </section>
 
     <footer>
