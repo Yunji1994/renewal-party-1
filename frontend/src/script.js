@@ -1,47 +1,62 @@
 const form = document.getElementById('rsvp-form');
 const statusEl = document.getElementById('status');
+const rsvpListEl = document.getElementById('rsvp-list');
 const API = window.API_URL || '';
-const STORAGE_KEY = 'renewal-party-rsvp-status';
 
-const countEls = {
-  yes: document.getElementById('count-yes'),
-  maybe: document.getElementById('count-maybe'),
-  no: document.getElementById('count-no')
-};
+function formatAttending(value) {
+  return value === 'yes' ? 'Yes' : value === 'maybe' ? 'Maybe' : 'No';
+}
 
-function loadCounts() {
+function renderRsvps(rows) {
+  if (!rows.length) {
+    rsvpListEl.innerHTML = '<p class="empty-state">No RSVPs yet. Be the first to respond.</p>';
+    return;
+  }
+
+  rsvpListEl.innerHTML = rows.map((row) => {
+    const name = row.name || 'Anonymous';
+    const attending = formatAttending(row.attending || 'no');
+    const plusOne = row.plus_one === 'yes' ? 'Bringing a +1' : 'No +1';
+    const dietary = row.dietary_restrictions ? `Dietary: ${row.dietary_restrictions}` : 'No dietary restrictions noted';
+    const message = row.message ? `Message: ${row.message}` : '';
+
+    return `
+      <article class="rsvp-item">
+        <div class="rsvp-item-main">
+          <strong>${name}</strong>
+          <span>${attending}</span>
+        </div>
+        <p>${plusOne}</p>
+        <p>${dietary}</p>
+        ${message ? `<p>${message}</p>` : ''}
+      </article>
+    `;
+  }).join('');
+}
+
+async function loadRsvps() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"yes":0,"maybe":0,"no":0}');
-  } catch {
-    return { yes: 0, maybe: 0, no: 0 };
+    const res = await fetch(new URL('/rsvps', API).toString(), {
+      method: 'GET',
+      mode: 'cors'
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    const rows = data.rows || [];
+    renderRsvps(rows);
+  } catch (err) {
+    console.error(err);
+    rsvpListEl.innerHTML = '<p class="empty-state">Unable to load RSVPs right now.</p>';
   }
 }
 
-function renderCounts(counts) {
-  Object.entries(countEls).forEach(([key, el]) => {
-    el.textContent = counts[key] || 0;
-  });
-}
-
-function saveCounts(counts) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(counts));
-  renderCounts(counts);
-}
-
-function recordResponse(attending) {
-  const counts = loadCounts();
-  counts[attending] = (counts[attending] || 0) + 1;
-  saveCounts(counts);
-}
-
-renderCounts(loadCounts());
+loadRsvps();
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   statusEl.textContent = 'Sending...';
   const fd = new FormData(form);
   const payload = Object.fromEntries(fd.entries());
-  payload.email = payload.email || 'not-provided';
   payload.plus_one = payload.plus_one || 'no';
   payload.dietary_restrictions = payload.dietary_restrictions || '';
 
@@ -54,8 +69,8 @@ form.addEventListener('submit', async (e) => {
     });
     if (!res.ok) throw new Error(await res.text());
     statusEl.textContent = 'RSVP received — thank you!';
-    recordResponse(payload.attending || 'yes');
     form.reset();
+    await loadRsvps();
   } catch (err) {
     console.error(err);
     statusEl.textContent = 'Error sending RSVP. Try again later.';
