@@ -16,8 +16,7 @@ function renderRsvps(rows) {
   rsvpListEl.innerHTML = rows.map((row) => {
     const name = row.name || 'Anonymous';
     const attending = formatAttending(row.attending || 'no');
-    const plusOne = row.plus_one === 'yes' ? 'Bringing a +1' : '';
-
+    const plusOne = row.plus_one === 'yes' ? 'Bringing a +1' : ''
     return `
       <article class="rsvp-item">
         <div class="rsvp-item-main">
@@ -25,8 +24,6 @@ function renderRsvps(rows) {
           <span>${attending}</span>
         </div>
         <p>${plusOne}</p>
-        <p>${dietary}</p>
-        ${message ? `<p>${message}</p>` : ''}
       </article>
     `;
   }).join('');
