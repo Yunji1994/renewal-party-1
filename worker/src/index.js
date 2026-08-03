@@ -24,9 +24,17 @@ export default {
 
         const created_at = new Date().toISOString();
         const stmt = env.DB.prepare(
-          'INSERT INTO rsvps (name, email, attending, guests, message, created_at) VALUES (?, ?, ?, ?, ?, ?)'
+          'INSERT INTO rsvps (name, email, attending, plus_one, dietary_restrictions, message, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
         );
-        await stmt.bind(data.name, data.email, data.attending || 'no', data.guests || 0, data.message || '', created_at).run();
+        await stmt.bind(
+          data.name,
+          data.email,
+          data.attending || 'no',
+          data.plus_one || 'no',
+          data.dietary_restrictions || '',
+          data.message || '',
+          created_at
+        ).run();
         return json({ok:true}, 201);
       }
 
