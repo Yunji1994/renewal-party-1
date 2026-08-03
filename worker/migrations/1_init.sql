@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS rsvps (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  attending TEXT,
+  guests INTEGER DEFAULT 0,
+  message TEXT,
+  created_at TEXT NOT NULL
+);

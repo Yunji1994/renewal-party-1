@@ -1,0 +1,19 @@
+name = "rsvp-worker"
+main = "./src/index.js"
+compatibility_date = "2026-08-01"
+# Set your Cloudflare account ID here or set via env when running wrangler.
+account_id = "b013f45a2f5b76041fa63b2e92528795"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rsvp_db"
+database_id = "a77ab183-9931-4e35-8835-9b02e615c2fd"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "test"
+
+[vars]
+# Place your admin token in the dashboard or set as a secret; example shows using env secret ADMIN_TOKEN
+

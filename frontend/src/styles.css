@@ -1,0 +1,15 @@
+:root{--max-width:900px;--accent:#c04848}
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+body{display:flex;align-items:center;justify-content:center;padding:24px;margin:0;background:#f8f3ef}
+.container{max-width:var(--max-width);width:100%}
+header h1{margin:.2rem 0}
+.hero img{width:100%;height:auto;border-radius:8px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+.info-card,.rsvp{background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.info-card h2{margin-top:0;margin-bottom:8px;font-size:1.1rem}
+.info-card p{margin:0;line-height:1.5;color:#555}
+.rsvp{margin-top:16px}
+form label{display:block;margin-bottom:8px}
+input,textarea,select{width:100%;padding:8px;border:1px solid #ddd;border-radius:4px}
+button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
+#status{margin-top:8px}

@@ -1,0 +1,8 @@
+{
+  "name": "rsvp-worker",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "^2.0.0"
+  }
+}

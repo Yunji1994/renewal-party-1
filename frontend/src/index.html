@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>You're Invited</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Replace with your Worker URL or set via CLI when publishing -->
+  <script>window.API_URL = 'https://rsvp-worker.yunji-j-jiang.workers.dev/'</script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>You're Invited!</h1>
+      <p>Join us for a celebration. RSVP below.</p>
+    </header>
+
+    <section class="hero">
+      <!-- Replace this with your R2-hosted image URL -->
+      <img src="https://<YOUR_ACCOUNT>.r2.cloudflarestorage.com/bucket/hero.jpg" alt="Party" />
+    </section>
+
+    <section class="info-grid" aria-label="Event information">
+      <article class="info-card">
+        <h2>Event Details</h2>
+        <p>Details coming soon. Add the date, time, venue, dress code, and any special notes here.</p>
+      </article>
+      <article class="info-card">
+        <h2>Updates &amp; Announcements</h2>
+        <p>New announcements will appear here. Share reminders, schedule changes, and anything important for guests.</p>
+      </article>
+    </section>
+
+    <section class="rsvp">
+      <form id="rsvp-form">
+        <label>Name<input name="name" required /></label>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>Attending
+          <select name="attending">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </label>
+        <label>Guests<input name="guests" type="number" min="0" value="0" /></label>
+        <label>Message<textarea name="message"></textarea></label>
+        <button type="submit">Send RSVP</button>
+      </form>
+      <div id="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      <small>Hosted on GitHub Pages • API via Cloudflare Workers</small>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
