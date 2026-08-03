@@ -16,9 +16,7 @@ function renderRsvps(rows) {
   rsvpListEl.innerHTML = rows.map((row) => {
     const name = row.name || 'Anonymous';
     const attending = formatAttending(row.attending || 'no');
-    const plusOne = row.plus_one === 'yes' ? 'Bringing a +1' : 'No +1';
-    const dietary = row.dietary_restrictions ? `Dietary: ${row.dietary_restrictions}` : 'No dietary restrictions noted';
-    const message = row.message ? `Message: ${row.message}` : '';
+    const plusOne = row.plus_one === 'yes' ? 'Bringing a +1' : '';
 
     return `
       <article class="rsvp-item">

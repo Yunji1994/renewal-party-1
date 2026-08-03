@@ -20,7 +20,7 @@ export default {
       if (request.method === 'POST' && url.pathname === '/rsvp') {
         const data = await request.json();
         // basic validation
-        if (!data.name || !data.email) return json({error:'name and email required'}, 400);
+        if (!data.name) return json({error:'name required'}, 400);
 
         const created_at = new Date().toISOString();
         const stmt = env.DB.prepare(
@@ -39,8 +39,6 @@ export default {
       }
 
       if (request.method === 'GET' && url.pathname === '/rsvps') {
-        const token = request.headers.get('x-admin-token') || '';
-        if (!env.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) return json({error:'unauthorized'}, 401);
         const res = await env.DB.prepare('SELECT * FROM rsvps ORDER BY created_at DESC').all();
         return json({rows: res.results || res.rows || []});
       }
